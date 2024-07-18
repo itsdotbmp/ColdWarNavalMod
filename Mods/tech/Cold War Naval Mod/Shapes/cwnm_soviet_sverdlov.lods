@@ -1,0 +1,8 @@
+model = {
+	lods = {		
+		{"cwnm_soviet_sverdlov.edm",5000.00}; 
+		{"cwnm_soviet_sverdlov.edm",10000.00}; 
+		{"cwnm_soviet_sverdlov.edm",15500.00}; 
+	};
+	collision_shell = "cwnm_soviet_sverdlov.edm";
+}
