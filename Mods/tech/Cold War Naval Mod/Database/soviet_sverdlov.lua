@@ -312,7 +312,7 @@ GT.WS[ws].angles												= {
 -- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
 -- }
 GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(-90);
+GT.WS[ws].reference_angle_Y 						= math.rad(-120);
 GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Sb_100mm_Turret3_Barrel_1',
