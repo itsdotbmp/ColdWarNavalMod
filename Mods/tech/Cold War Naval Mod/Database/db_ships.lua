@@ -25,7 +25,8 @@ local function ship_file(f)
 	end;
 end
 --^^ this is normal on all ships
+local soviet_path = '/Database/Soviet/'
 
-ship_file(current_mod_path.."/Database/soviet_sverdlov.lua") -- this is the ship or ships lua files
+ship_file(current_mod_path..soviet_path.."soviet_sverdlov.lua") -- this is the ship or ships lua files
 
 --add anything else here like LSO POS and Hanger stuff
