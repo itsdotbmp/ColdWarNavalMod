@@ -92,43 +92,13 @@ GT.airFindDist = 28000 -- Max detenction range air threats (meters)
 --Radar info
 GT.WS = {}
 GT.WS.maxTargetDetectionRange = 25000; --450000
-GT.WS.radar_type = 103 --104= Short range, 103 = Mid range at a guess 102 = Long range
+GT.WS.radar_type = 109 --104= Short range, 103 = Mid range at a guess 102 = Long range
 GT.WS.searchRadarMaxElevation = math.rad(60);
+
+
 local ws;
 
--- DSHK Class (from TeTeT)
-GT_t.WS_t.ship_dshk_2x12mm = {name = "2x12.7mm DShK"};
-GT_t.WS_t.ship_dshk_2x12mm.angles = {
-{math.rad(180), math.rad(-180), math.rad(-90), math.rad(90)},
-};
-GT_t.WS_t.ship_dshk_2x12mm.omegaY = math.rad(115) -- Block 1B
-GT_t.WS_t.ship_dshk_2x12mm.omegaZ = math.rad(116) -- Block 1B
-GT_t.WS_t.ship_dshk_2x12mm.pidY = {p=300, i = 0.05, d = 10.0, inn = 1000};
-GT_t.WS_t.ship_dshk_2x12mm.pidZ = {p=300, i = 0.05, d = 10.0, inn = 1000};
-GT_t.WS_t.ship_dshk_2x12mm.reference_angle_Z = 0
-GT_t.WS_t.ship_dshk_2x12mm.LN = {}
-GT_t.WS_t.ship_dshk_2x12mm.LN[1] = {}
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].type = 3
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].distanceMin = 10
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].distanceMax = 5200 -- effective shooting
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].max_trg_alt = 500
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].reactionTime = 3
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].beamWidth = math.rad(1);
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].sensor = {}
-set_recursive_metatable(GT_t.WS_t.ship_dshk_2x12mm.LN[1].sensor, GT_t.WSN_t[3])
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL = {}
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1] = {}
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1].ammo_capacity = 2000;
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1].shell_name = {"Utes_12_7x108_T"};
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1].shell_display_name = "12.7mm";
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1].shot_delay = 0.08;
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].PL[1].reload_time = 15;
-GT_t.WS_t.ship_dshk_2x12mm.LN[1].BR =
-{ {
-	pos = { 2, 0, -0.1 }
-}, {
-	pos = { 2, 0, 0.1 }
-} }
+
 
 
 -------------------------------------------------------------------------
@@ -267,172 +237,185 @@ GT.WS[ws].LN[1].BR[3].recoilTime        = 0.6;
 
 -- 100mm/KS-19s 6x Anti-Air/Anti-Ship Guns - Should be Radar/optically guided
 -- Starboard Front Gun 100mm
--- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Sb_100mm_Turret1_Center'
-GT.WS[ws].drawArgument1 = 301
-GT.WS[ws].drawArgument2 = 101
-GT.WS[ws].angles = {
-                    {math.rad(-38), math.rad(-135), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(-60);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Sb_100mm_Turret1_Center';
+GT.WS[ws].drawArgument1									= 301;
+GT.WS[ws].drawArgument2									= 101;
+GT.WS[ws].angles												= {
+	{math.rad(-38), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(-38), math.rad(-135), math.rad(-8), math.rad(85)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(-60);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Sb_100mm_Turret1_Barrel_1',
+		recoilArgument = 104,
 	},
 	{
 		connector_name = 'Sb_100mm_Turret1_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 104; },
-	{ recoilArgument = 105; },
+		recoilArgument = 105,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -- Starboard Middle Gun 100mm
 -- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Sb_100mm_Turret2_Center'
-GT.WS[ws].drawArgument1 = 302
-GT.WS[ws].drawArgument2 = 102
-GT.WS[ws].angles = {
-                    {math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(-90);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Sb_100mm_Turret2_Center';
+GT.WS[ws].drawArgument1									= 302;
+GT.WS[ws].drawArgument2									= 102;
+GT.WS[ws].angles												= {
+	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(-90);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Sb_100mm_Turret2_Barrel_1',
+		recoilArgument = 106,
 	},
 	{
 		connector_name = 'Sb_100mm_Turret2_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 106; },
-	{ recoilArgument = 107; },
+		recoilArgument = 107,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -- Starboard Rear Gun 100mm
--- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Sb_100mm_Turret3_Center'
-GT.WS[ws].drawArgument1 = 303
-GT.WS[ws].drawArgument2 = 103
-GT.WS[ws].angles = {
-                    {math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(-120);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Sb_100mm_Turret3_Center';
+GT.WS[ws].drawArgument1									= 303;
+GT.WS[ws].drawArgument2									= 103;
+GT.WS[ws].angles												= {
+	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(-90);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Sb_100mm_Turret3_Barrel_1',
+		recoilArgument = 108,
 	},
 	{
 		connector_name = 'Sb_100mm_Turret3_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 108; },
-	{ recoilArgument = 109; },
+		recoilArgument = 109,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -- Port Front Gun 100mm
--- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Pt_100mm_Turret1_Center'
-GT.WS[ws].drawArgument1 = 201
-GT.WS[ws].drawArgument2 = 401
-GT.WS[ws].angles = {
-                    {math.rad(135), math.rad(40), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(60);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Pt_100mm_Turret1_Center';
+GT.WS[ws].drawArgument1									= 201;
+GT.WS[ws].drawArgument2									= 401;
+GT.WS[ws].angles												= {
+	{math.rad(135), math.rad(40), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(60);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Pt_100mm_Turret1_Barrel_1',
+		recoilArgument = 204,
 	},
 	{
 		connector_name = 'Pt_100mm_Turret1_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 204; },
-	{ recoilArgument = 205; },
+		recoilArgument = 205,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -- Port Middle Gun 100mm
--- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Pt_100mm_Turret2_Center'
-GT.WS[ws].drawArgument1 = 202
-GT.WS[ws].drawArgument2 = 402
-GT.WS[ws].angles = {
-                    {math.rad(135), math.rad(35), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(90);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Pt_100mm_Turret2_Center';
+GT.WS[ws].drawArgument1									= 202;
+GT.WS[ws].drawArgument2									= 402;
+GT.WS[ws].angles												= {
+	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(90);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Pt_100mm_Turret2_Barrel_1',
+		recoilArgument = 206,
 	},
 	{
 		connector_name = 'Pt_100mm_Turret2_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 206; },
-	{ recoilArgument = 207; },
+		recoilArgument = 207,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -- Port Rear Gun 100mm
--- Based on KS19 for speed etc, needs updating
-ws = GT_t.inc_ws();
-GT.WS[ws] = {}
-GT.WS[ws].center = 'Pt_100mm_Turret1_Center'
-GT.WS[ws].drawArgument1 = 203
-GT.WS[ws].drawArgument2 = 403
-GT.WS[ws].angles = {
-                    {math.rad(135), math.rad(35), math.rad(-5), math.rad(90)},
-                    };
-GT.WS[ws].reference_angle_Y = math.rad(120);
-__LN = add_launcher(GT.WS[ws], GT_t.LN_t.KS19);
-__LN.BR =
-{
+ws																			= GT_t.inc_ws();
+GT.WS[ws]																= {};
+set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- GT.WS[ws].area													= -- TODO add damage model
+GT.WS[ws].center												= 'Pt_100mm_Turret3_Center';
+GT.WS[ws].drawArgument1									= 203;
+GT.WS[ws].drawArgument2									= 403;
+GT.WS[ws].angles												= {
+	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
+}
+-- GT.WS[ws].angles_mech = {
+-- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- }
+GT.WS[ws].reference_angle_Z							= math.rad(20);
+GT.WS[ws].reference_angle_Y 						= math.rad(120);
+GT.WS[ws].LN[1].BR											= {
 	{
 		connector_name = 'Pt_100mm_Turret3_Barrel_1',
+		recoilArgument = 208,
 	},
 	{
 		connector_name = 'Pt_100mm_Turret3_Barrel_2',
-	},
-};
-GT.WS[ws].LN[1].BR =
-{
-	{ recoilArgument = 208; },
-	{ recoilArgument = 209; },
+		recoilArgument = 209,
+	}
 }
-GT.WS[ws].LN[1].BR[1].recoilTime = 0.1;
+GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
+GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+
 
 -------------------------------------------------------------------------
 -- AAA MG's around the ship --
@@ -821,7 +804,7 @@ GT.WS[ws].LN[1].BR =
 };
 -------------------------------------------------------------------------
 
-GT.Name = "cvnm_soviet_sverdlov" -- folder name for Liveries
+GT.Name = "Sverdlov" -- folder name for Liveries
 GT.DisplayName = _("Sverdlov-Class Cruiser") -- name in game in ME and on the tape at the bottom
 GT.DisplayNameShort = _("Sverdlov") -- Label name
 GT.Rate = 3000.000000 -- Reward Points

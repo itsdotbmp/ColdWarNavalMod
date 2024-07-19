@@ -34,7 +34,15 @@ mount_vfs_liveries_path (current_mod_path ..  "/Liveries")
 -- textures
 mount_vfs_texture_path	(current_mod_path ..  "/Textures/cvnm_soviet_sverdlov")
 
--- dofile(current_mod_path..'/Weapons/Weapon.lua') -- any custom weapons the mod has
+local weapons_path = '/Database/Weapons/'
+
+dofile(current_mod_path .. weapons_path ..'ZS55.lua')
+
+local launchers_path = '/Database/Launchers/'
+
+dofile(current_mod_path .. launchers_path ..'CM_51.lua') -- any custom weapons the mod has
+
+
 dofile(current_mod_path .."/Database/db_ships.lua")
 
 
