@@ -109,312 +109,585 @@ local ws;
 -- Converted to a triple cannon
 
 -- Turret 1 - Should be a Triple 152mm Cannon
-ws                                      = GT_t.inc_ws();
-GT.WS[ws]                               = {};
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ship_45cal_Mk6 );
--- GT.WS[ws].area                          = 'DMG-HULL-AW-AND-TURRET-A';
-GT.WS[ws].center                        = 'Turret1_Center';
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Turret1_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(120), math.rad(-120), math.rad(-3), math.rad(12)},
+                    };
 GT.WS[ws].drawArgument1                 = 30;
 GT.WS[ws].drawArgument2                 = 31;
-GT.WS[ws].angles                        = { 
-	{math.rad(120), math.rad(-120), math.rad(-3), math.rad(12)},
-					}
-GT.WS[ws].reference_angle_Z             = math.rad(5);
-GT.WS[ws].LN[1].BR                      = {
+GT.WS[ws].reference_angle_Z = math.rad(6);
+
+--GT.WS[8].LN[1] -- 152mm Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_B38);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name                  = 'Turret1_Barrel_1',
 		recoilArgument                  = 32,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret1_Barrel_2',
 		recoilArgument                  = 33,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret1_Barrel_3',
 		recoilArgument                  = 34,
+		recoilTime       								= 0.6,
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[2].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[3].recoilTime        = 0.6;
-
+	} 
 
 -- Turret 2 - Should be a Triple 152mm Cannon
-ws                                      = GT_t.inc_ws();
-GT.WS[ws]                               = {};
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ship_45cal_Mk6 );
--- GT.WS[ws].area                          = 'DMG-HULL-AW-AND-TURRET-A';
-GT.WS[ws].center                        = 'Turret2_Center';
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Turret2_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(120), math.rad(-120), math.rad(-3), math.rad(12)},
+                    };
 GT.WS[ws].drawArgument1                 = 40;
 GT.WS[ws].drawArgument2                 = 41;
-GT.WS[ws].angles                        = { 
-	{math.rad(120), math.rad(-120), math.rad(-3), math.rad(12)},
-					}
-GT.WS[ws].reference_angle_Z             = math.rad(5);
-GT.WS[ws].LN[1].BR                      = {
+GT.WS[ws].reference_angle_Z = math.rad(6);
+
+--GT.WS[8].LN[1] -- 152mm Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_B38);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name                  = 'Turret2_Barrel_1',
 		recoilArgument                  = 42,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret2_Barrel_2',
 		recoilArgument                  = 43,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret2_Barrel_3',
 		recoilArgument                  = 44,
+		recoilTime       								= 0.6,
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[2].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[3].recoilTime        = 0.6;
-
+	} 
 
 -- Turret 3 - Should be a Triple 152mm Cannon
-ws                                      = GT_t.inc_ws();
-GT.WS[ws]                               = {};
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ship_45cal_Mk6 );
--- GT.WS[ws].area                          = 'DMG-HULL-AW-AND-TURRET-A';
-GT.WS[ws].center                        = 'Turret3_Center';
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Turret3_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(-60), math.rad(60), math.rad(-5), math.rad(12)},
+                    };
 GT.WS[ws].drawArgument1                 = 50;
 GT.WS[ws].drawArgument2                 = 51;
-GT.WS[ws].angles                        = { 
-	{math.rad(-60), math.rad(60), math.rad(-5), math.rad(12)},
-					}
 GT.WS[ws].reference_angle_Z = math.rad(6);
 GT.WS[ws].reference_angle_Y = math.rad(180) -- facing rearward
-GT.WS[ws].LN[1].BR                      = {
+
+--GT.WS[8].LN[1] -- 152mm Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_B38);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name                  = 'Turret3_Barrel_1',
 		recoilArgument                  = 52,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret3_Barrel_2',
 		recoilArgument                  = 53,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret3_Barrel_3',
 		recoilArgument                  = 54,
+		recoilTime       								= 0.6,
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[2].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[3].recoilTime        = 0.6;
-
+	} 
 
 -- Turret 4 - Should be a Triple 152mm Cannon
-ws                                      = GT_t.inc_ws();
-GT.WS[ws]                               = {};
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ship_45cal_Mk6 );
--- GT.WS[ws].area                          = 'DMG-HULL-AW-AND-TURRET-A';
-GT.WS[ws].center                        = 'Turret4_Center';
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Turret4_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(-60), math.rad(60), math.rad(-5), math.rad(12)},
+                    };
 GT.WS[ws].drawArgument1                 = 60;
 GT.WS[ws].drawArgument2                 = 61;
-GT.WS[ws].angles                        = { 
-	{math.rad(-60), math.rad(60), math.rad(-5), math.rad(12)},
-					}
 GT.WS[ws].reference_angle_Z = math.rad(6);
 GT.WS[ws].reference_angle_Y = math.rad(180) -- facing rearward
-GT.WS[ws].LN[1].BR                      = {
+
+--GT.WS[8].LN[1] -- 152mm Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_B38);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name                  = 'Turret4_Barrel_1',
 		recoilArgument                  = 62,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret4_Barrel_2',
 		recoilArgument                  = 63,
+		recoilTime       								= 0.6,
 	},
 	{
 		connector_name                  = 'Turret4_Barrel_3',
 		recoilArgument                  = 64,
+		recoilTime       								= 0.6,
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[2].recoilTime        = 0.6;
-GT.WS[ws].LN[1].BR[3].recoilTime        = 0.6;
+	} 
 
 
 
 -- 100mm/KS-19s 6x Anti-Air/Anti-Ship Guns - Should be Radar/optically guided
 -- Starboard Front Gun 100mm
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Sb_100mm_Turret1_Center';
-GT.WS[ws].drawArgument1									= 301;
-GT.WS[ws].drawArgument2									= 101;
-GT.WS[ws].angles												= {
-	{math.rad(-38), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(-38), math.rad(-135), math.rad(-8), math.rad(85)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Sb_100mm_Turret1_Center';
+-- GT.WS[ws].drawArgument1									= 301;
+-- GT.WS[ws].drawArgument2									= 101;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(-38), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(-60);
-GT.WS[ws].LN[1].BR											= {
+-- -- GT.WS[ws].angles_mech = {
+-- -- 	{math.rad(-38), math.rad(-135), math.rad(-8), math.rad(85)}, -- TODO Needs updating
+-- -- }
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(-60);
+-- GT.WS[ws].LN[1].BR											= {
+-- 	{
+-- 		connector_name = 'Sb_100mm_Turret1_Barrel_1',
+-- 		recoilArgument = 104,
+-- 		recoilTime		 = 0.3
+-- 	},
+-- 	{
+-- 		connector_name = 'Sb_100mm_Turret1_Barrel_2',
+-- 		recoilArgument = 105,
+-- 		recoilTime		 = 0.3
+-- 	}
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Sb_100mm_Turret1_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(-38), math.rad(-135), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 301
+GT.WS[ws].drawArgument2 = 101
+GT.WS[ws].reference_angle_Z = math.rad(20);
+GT.WS[ws].reference_angle_Y = math.rad(-60);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Sb_100mm_Turret1_Barrel_1',
 		recoilArgument = 104,
+		recoilTime		 = 0.3
 	},
 	{
 		connector_name = 'Sb_100mm_Turret1_Barrel_2',
 		recoilArgument = 105,
+		recoilTime		 = 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
+
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Sb_100mm_Turret1_Barrel_1',
+	recoilArgument = 104,
+	recoilTime		 = 0.3
+},
+{
+	connector_name = 'Sb_100mm_Turret1_Barrel_2',
+	recoilArgument = 105,
+	recoilTime		 = 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- END OF GUN
 
 
 -- Starboard Middle Gun 100mm
 -- Based on KS19 for speed etc, needs updating
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Sb_100mm_Turret2_Center';
-GT.WS[ws].drawArgument1									= 302;
-GT.WS[ws].drawArgument2									= 102;
-GT.WS[ws].angles												= {
-	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Sb_100mm_Turret2_Center';
+-- GT.WS[ws].drawArgument1									= 302;
+-- GT.WS[ws].drawArgument2									= 102;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(-90);
-GT.WS[ws].LN[1].BR											= {
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(-90);
+-- GT.WS[ws].LN[1].BR											= {
+	-- {
+	-- 	connector_name = 'Sb_100mm_Turret2_Barrel_1',
+	-- 	recoilArgument = 106,
+	-- 	recoilTime		 = 0.3
+	-- },
+	-- {
+	-- 	connector_name = 'Sb_100mm_Turret2_Barrel_2',
+	-- 	recoilArgument = 107,
+	-- 	recoilTime		 = 0.3
+	-- }
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Sb_100mm_Turret2_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+									{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 302
+GT.WS[ws].drawArgument2 = 102
+GT.WS[ws].reference_angle_Z = math.rad(20);
+	GT.WS[ws].reference_angle_Y = math.rad(-90);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Sb_100mm_Turret2_Barrel_1',
 		recoilArgument = 106,
+		recoilTime		 = 0.3
 	},
 	{
 		connector_name = 'Sb_100mm_Turret2_Barrel_2',
 		recoilArgument = 107,
+		recoilTime		 = 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
 
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Sb_100mm_Turret2_Barrel_1',
+	recoilArgument = 106,
+	recoilTime		 = 0.3
+},
+{
+	connector_name = 'Sb_100mm_Turret2_Barrel_2',
+	recoilArgument = 107,
+	recoilTime		 = 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- END OF GUN
 
 -- Starboard Rear Gun 100mm
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Sb_100mm_Turret3_Center';
-GT.WS[ws].drawArgument1									= 303;
-GT.WS[ws].drawArgument2									= 103;
-GT.WS[ws].angles												= {
-	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Sb_100mm_Turret3_Center';
+-- GT.WS[ws].drawArgument1									= 303;
+-- GT.WS[ws].drawArgument2									= 103;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(-120);
-GT.WS[ws].LN[1].BR											= {
+-- -- GT.WS[ws].angles_mech = {
+-- -- 	{math.rad(-35), math.rad(-135), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- -- }
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(-120);
+-- GT.WS[ws].LN[1].BR											= {
+	-- {
+	-- 	connector_name = 'Sb_100mm_Turret3_Barrel_1',
+	-- 	recoilArgument = 108,
+	-- 	recoilTime		 = 0.3
+	-- },
+	-- {
+	-- 	connector_name = 'Sb_100mm_Turret3_Barrel_2',
+	-- 	recoilArgument = 109,
+	-- 	recoilTime		 = 0.3
+	-- }
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Sb_100mm_Turret3_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+									{math.rad(-35), math.rad(-135), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 303
+GT.WS[ws].drawArgument2 = 103
+GT.WS[ws].reference_angle_Z = math.rad(20);
+GT.WS[ws].reference_angle_Y = math.rad(-120);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Sb_100mm_Turret3_Barrel_1',
 		recoilArgument = 108,
+		recoilTime		 = 0.3
 	},
 	{
 		connector_name = 'Sb_100mm_Turret3_Barrel_2',
 		recoilArgument = 109,
+		recoilTime		 = 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
 
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Sb_100mm_Turret3_Barrel_1',
+	recoilArgument = 108,
+	recoilTime		 = 0.3
+},
+{
+	connector_name = 'Sb_100mm_Turret3_Barrel_2',
+	recoilArgument = 109,
+	recoilTime		 = 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- End of Gun
 
 -- Port Front Gun 100mm
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Pt_100mm_Turret1_Center';
-GT.WS[ws].drawArgument1									= 201;
-GT.WS[ws].drawArgument2									= 401;
-GT.WS[ws].angles												= {
-	{math.rad(135), math.rad(40), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Pt_100mm_Turret1_Center';
+-- GT.WS[ws].drawArgument1									= 201;
+-- GT.WS[ws].drawArgument2									= 401;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(135), math.rad(40), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(60);
-GT.WS[ws].LN[1].BR											= {
+-- -- GT.WS[ws].angles_mech = {
+-- -- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- -- }
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(60);
+-- GT.WS[ws].LN[1].BR											= {
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret1_Barrel_1',
+-- 		recoilArgument = 204,
+-- 		recoilTime		 = 0.3
+-- 	},
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret1_Barrel_2',
+-- 		recoilArgument = 205,
+-- 		recoilTime		 = 0.3
+-- 	}
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Pt_100mm_Turret1_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(135), math.rad(40), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 201
+GT.WS[ws].drawArgument2 = 401
+GT.WS[ws].reference_angle_Z = math.rad(20);
+	GT.WS[ws].reference_angle_Y = math.rad(60);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Pt_100mm_Turret1_Barrel_1',
 		recoilArgument = 204,
+		recoilTime		 = 0.3
 	},
 	{
 		connector_name = 'Pt_100mm_Turret1_Barrel_2',
 		recoilArgument = 205,
+		recoilTime		 = 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
+
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Pt_100mm_Turret1_Barrel_1',
+	recoilArgument = 204,
+	recoilTime		 = 0.3
+},
+{
+	connector_name = 'Pt_100mm_Turret1_Barrel_2',
+	recoilArgument = 205,
+	recoilTime		 = 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- END OF GUN
 
 
 -- Port Middle Gun 100mm
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Pt_100mm_Turret2_Center';
-GT.WS[ws].drawArgument1									= 202;
-GT.WS[ws].drawArgument2									= 402;
-GT.WS[ws].angles												= {
-	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Pt_100mm_Turret2_Center';
+-- GT.WS[ws].drawArgument1									= 202;
+-- GT.WS[ws].drawArgument2									= 402;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(90);
-GT.WS[ws].LN[1].BR											= {
+-- -- GT.WS[ws].angles_mech = {
+-- -- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- -- }
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(90);
+-- GT.WS[ws].LN[1].BR											= {
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret2_Barrel_1',
+-- 		recoilArgument = 206,
+-- 		recoilTime		 = 0.3
+-- 	},
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret2_Barrel_2',
+-- 		recoilArgument = 207,
+-- 		recoilTime		 = 0.3
+-- 	}
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Pt_100mm_Turret2_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 202
+GT.WS[ws].drawArgument2 = 402
+GT.WS[ws].reference_angle_Z = math.rad(20);
+	GT.WS[ws].reference_angle_Y = math.rad(90);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Pt_100mm_Turret2_Barrel_1',
 		recoilArgument = 206,
+		recoilTime		 = 0.3
 	},
 	{
 		connector_name = 'Pt_100mm_Turret2_Barrel_2',
 		recoilArgument = 207,
+		recoilTime		 = 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
+
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Pt_100mm_Turret2_Barrel_1',
+	recoilArgument = 206,
+	recoilTime		 = 0.3
+},
+{
+	connector_name = 'Pt_100mm_Turret2_Barrel_2',
+	recoilArgument = 207,
+	recoilTime		 = 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- END OF GUN
 
 
 -- Port Rear Gun 100mm
-ws																			= GT_t.inc_ws();
-GT.WS[ws]																= {};
-set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
--- GT.WS[ws].area													= -- TODO add damage model
-GT.WS[ws].center												= 'Pt_100mm_Turret3_Center';
-GT.WS[ws].drawArgument1									= 203;
-GT.WS[ws].drawArgument2									= 403;
-GT.WS[ws].angles												= {
-	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
-}
--- GT.WS[ws].angles_mech = {
--- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- ws																			= GT_t.inc_ws();
+-- GT.WS[ws]																= {};
+-- set_recursive_metatable(GT.WS[ws], GT_t.LN_t.cwnm_CM51 );
+-- -- GT.WS[ws].area													= -- TODO add damage model
+-- GT.WS[ws].center												= 'Pt_100mm_Turret3_Center';
+-- GT.WS[ws].drawArgument1									= 203;
+-- GT.WS[ws].drawArgument2									= 403;
+-- GT.WS[ws].angles												= {
+-- 	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)}, -- TODO Needs updating
 -- }
-GT.WS[ws].reference_angle_Z							= math.rad(20);
-GT.WS[ws].reference_angle_Y 						= math.rad(120);
-GT.WS[ws].LN[1].BR											= {
+-- -- GT.WS[ws].angles_mech = {
+-- -- 	{math.rad(135), math.rad(35), math.rad(-5), math.rad(90)}, -- TODO Needs updating
+-- -- }
+-- GT.WS[ws].reference_angle_Z							= math.rad(20);
+-- GT.WS[ws].reference_angle_Y 						= math.rad(120);
+-- GT.WS[ws].LN[1].BR											= {
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret3_Barrel_1',
+-- 		recoilArgument = 208,
+-- 		recoilTime				= 0.3
+-- 	},
+-- 	{
+-- 		connector_name = 'Pt_100mm_Turret3_Barrel_2',
+-- 		recoilArgument = 209,
+-- 		recoilTime				= 0.3
+-- 	}
+-- }
+--GT.WS[8] -- Current Hill based code
+local ws = GT_t.inc_ws();
+GT.WS[ws] = {}
+GT.WS[ws].center = 'Pt_100mm_Turret3_Center'
+GT.WS[ws].omegaY = math.rad(30);
+GT.WS[ws].omegaZ = math.rad(20);
+GT.WS[ws].angles = {
+	{math.rad(135), math.rad(35), math.rad(-7.5), math.rad(85)},
+                    };
+GT.WS[ws].drawArgument1 = 203;
+GT.WS[ws].drawArgument2 = 403;
+GT.WS[ws].reference_angle_Z = math.rad(20);
+	GT.WS[ws].reference_angle_Y = math.rad(120);
+
+--GT.WS[8].LN[1] -- Anti Air Gun
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51_Air);
+__LN.sightMaxTanVel = 300
+__LN.BR = {
 	{
 		connector_name = 'Pt_100mm_Turret3_Barrel_1',
 		recoilArgument = 208,
+		recoilTime				= 0.3
 	},
 	{
 		connector_name = 'Pt_100mm_Turret3_Barrel_2',
 		recoilArgument = 209,
+		recoilTime				= 0.3
 	}
-}
-GT.WS[ws].LN[1].BR[1].recoilTime				= 0.3
-GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
+	} 
+
+--GT.WS[8].LN[2] -- Allows for A/G Shooting
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.Sverdlov_CM51);
+__LN.BR = {{
+	connector_name = 'Pt_100mm_Turret3_Barrel_1',
+	recoilArgument = 208,
+	recoilTime				= 0.3
+},
+{
+	connector_name = 'Pt_100mm_Turret3_Barrel_2',
+	recoilArgument = 209,
+	recoilTime				= 0.3
+}} 
+__LN.customViewPoint = { "genericHowitzer", {-6.0, 1.0, 0.0}, }	
+-- END OF GUN
 
 
 -------------------------------------------------------------------------
@@ -423,7 +696,6 @@ GT.WS[ws].LN[1].BR[2].recoilTime				= 0.3
 -- Pt_AAA_Turret1
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret1_Center'
 GT.WS[ws].drawArgument1 = 71
@@ -434,19 +706,21 @@ GT.WS[ws].angles = {
 	{math.rad(15.12), math.rad(-120.06), math.rad(13.05), math.rad(68.58)},
 	{math.rad(-120.06), math.rad(-180), math.rad(29.97), math.rad(51.39)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret1_Barrel_1',
 	},
 	{
 		connector_name = 'Pt_AAA_Turret1_Barrel_2',
 	}
-};
+} 
+
+
+
 -- Pt_AAA_Turret2
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret2_Center'
 GT.WS[ws].drawArgument1 = 73
@@ -459,8 +733,8 @@ GT.WS[ws].angles = {
 	{math.rad(143.28), math.rad(30.78), math.rad(-3.6), math.rad(68.58)},
 	{math.rad(180), math.rad(143.28), math.rad(31.05), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret2_Barrel_1',
 	},
@@ -471,7 +745,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret3
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret3_Center'
 GT.WS[ws].drawArgument1 = 75
@@ -483,8 +756,8 @@ GT.WS[ws].angles = {
 	{math.rad(126.36), math.rad(33.3), math.rad(-4.95), math.rad(68.58)},
 	{math.rad(136.8), math.rad(126.36), math.rad(16.02), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret3_Barrel_1',
 	},
@@ -495,7 +768,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret4
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret4_Center'
 GT.WS[ws].drawArgument1 = 77
@@ -507,8 +779,8 @@ GT.WS[ws].angles = {
 	{math.rad(117.18), math.rad(30.78), math.rad(-4.23), math.rad(68.58)},
 	{math.rad(151.2), math.rad(117.18), math.rad(40.95), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret4_Barrel_1',
 	},
@@ -519,7 +791,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret5
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret5_Center'
 GT.WS[ws].drawArgument1 = 79
@@ -530,8 +801,8 @@ GT.WS[ws].angles = {
 	{math.rad(32.04), math.rad(9.9), math.rad(18), math.rad(27.18)},
 	{math.rad(144.72), math.rad(32.04), math.rad(10.17), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret5_Barrel_1',
 	},
@@ -542,7 +813,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret6
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret6_Center'
 GT.WS[ws].drawArgument1 = 91
@@ -552,8 +822,8 @@ GT.WS[ws].reference_angle_Y = math.rad(50)
 GT.WS[ws].angles = {
 	{math.rad(180), math.rad(8.46), math.rad(8.820), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret6_Barrel_1',
 	},
@@ -564,7 +834,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret7
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret7_Center'
 GT.WS[ws].drawArgument1 = 93
@@ -576,8 +845,8 @@ GT.WS[ws].angles = {
 	{math.rad(180), math.rad(47.7), math.rad(42.3), math.rad(68.58)},
 	{math.rad(-180), math.rad(-72.72), math.rad(23.85), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret7_Barrel_1',
 	},
@@ -588,7 +857,6 @@ GT.WS[ws].LN[1].BR =
 -- Pt_AAA_Turret8
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Pt_AAA_Turret8_Center'
 GT.WS[ws].drawArgument1 = 95
@@ -602,8 +870,8 @@ GT.WS[ws].angles = {
 	{math.rad(-147.24), math.rad(-121.14), math.rad(10.17), math.rad(77.94)},
 	{math.rad(-121.14), math.rad(-46.44), math.rad(23.85), math.rad(68.58)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Pt_AAA_Turret8_Barrel_1',
 	},
@@ -611,10 +879,10 @@ GT.WS[ws].LN[1].BR =
 		connector_name = 'Pt_AAA_Turret8_Barrel_2',
 	}
 };
+
 -- Sb_AAA_Turret1
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret1_Center'
 GT.WS[ws].drawArgument1 = 81
@@ -625,19 +893,19 @@ GT.WS[ws].angles = {
 	{math.rad(36.36), math.rad(-92.34), math.rad(13.05), math.rad(68.58)},
 	{math.rad(85.68), math.rad(36.36), math.rad(29.97), math.rad(51.39)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret1_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret1_Barrel_2',
 	}
-};
+} 
+
 -- Sb_AAA_Turret2
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret2_Center'
 GT.WS[ws].drawArgument1 = 83
@@ -649,19 +917,20 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret2_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret2_Barrel_2',
 	}
-};
+} 
+
+
 -- Sb_AAA_Turret3
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret3_Center'
 GT.WS[ws].drawArgument1 = 85
@@ -673,19 +942,20 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret3_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret3_Barrel_2',
 	}
-};
+} 
+
+
 -- Sb_AAA_Turret4
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret4_Center'
 GT.WS[ws].drawArgument1 = 87
@@ -697,19 +967,20 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret4_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret4_Barrel_2',
 	}
-};
+} 
+
+
 -- Sb_AAA_Turret5
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret5_Center'
 GT.WS[ws].drawArgument1 = 89
@@ -721,19 +992,20 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret5_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret5_Barrel_2',
 	}
-};
+} 
+
+
 -- Sb_AAA_Turret6
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret6_Center'
 GT.WS[ws].drawArgument1 = 111
@@ -745,19 +1017,18 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret6_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret6_Barrel_2',
 	}
-};
+} 
 -- Sb_AAA_Turret7
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret7_Center'
 GT.WS[ws].drawArgument1 = 113
@@ -769,19 +1040,18 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret7_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret7_Barrel_2',
 	}
-};
+} 
 -- Sb_AAA_Turret8
 ws = GT_t.inc_ws();
 GT.WS[ws] = {}
-set_recursive_metatable(GT.WS[ws], GT_t.WS_t.ZU_23)
 -- GT.WS[ws].area = 'FTURRETSV'
 GT.WS[ws].center = 'Sb_AAA_Turret8_Center'
 GT.WS[ws].drawArgument1 = 115
@@ -793,15 +1063,17 @@ GT.WS[ws].angles = {
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 -- {math.rad(33), math.rad(33), math.rad(33), math.rad(33)},
 };
-GT.WS[ws].LN[1].BR =
-{
+__LN = add_launcher(GT.WS[ws], GT_t.LN_t.CWNM_70_k);
+__LN.BR = {
 	{
 		connector_name = 'Sb_AAA_Turret8_Barrel_1',
 	},
 	{
 		connector_name = 'Sb_AAA_Turret8_Barrel_2',
 	}
-};
+} 
+
+
 -------------------------------------------------------------------------
 
 GT.Name = "Sverdlov" -- folder name for Liveries
@@ -809,8 +1081,8 @@ GT.DisplayName = _("Sverdlov-Class Cruiser") -- name in game in ME and on the ta
 GT.DisplayNameShort = _("Sverdlov") -- Label name
 GT.Rate = 3000.000000 -- Reward Points
 
-GT.Sensors = {  OPTIC = {"long-range naval optics", "long-range naval LLTV", "long-range naval FLIR"}, --optics types
-                RADAR = {"Tor 9A331", "carrier search radar"}, --radar types
+GT.Sensors = {  OPTIC = {"long-range air defence optics", "long-range naval optics", "long-range naval LLTV", "long-range naval FLIR"}, --optics types
+                RADAR = {"Tor 9A331", "generic SAM search visir", "generic SAM LL search visir", "ticonderoga search radar" }, --radar types
             }
 
  ----------------------------------------------------
